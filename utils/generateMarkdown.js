@@ -14,6 +14,7 @@ ${data.Description}
 [Tests](#tests)
 [Questions](#questions)
 
+
 ## Installation
 ${data.Install}
 
@@ -25,9 +26,11 @@ ${data.License}
 
 ## Contributors
 ${data.Contributors}
-${userData.name}
+
 ## Tests
 ## Questions
+
+${userData.name}
 `;
 }
 module.exports = { generateMarkdown: generateMarkdown };

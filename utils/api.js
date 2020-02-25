@@ -3,8 +3,7 @@ const api = {
   getUser(username, callback) {
     const URL = "https://api.github.com/users/" + username;
     axios.get(URL).then(function (response) {
-      console.log(response)
-      const userData = {
+      const userInfo = {
         avatar: response.data.avatar_URL,
         realName: response.data.name,
         email: response.data.email

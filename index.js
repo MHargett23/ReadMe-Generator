@@ -45,12 +45,14 @@ function writeToFile(fileName, data) {
 }
 
 function init() {
-    inquire.prompt(questions).then(response => {
+    inquire.prompt(questions).then(function (response) {
         API.getUser(response.username, function (userData) {
             const markdown = generate.generateMarkdown(response, userData);
         })
-        console.log("response", markdown);
     })
 }
 
+console.log("response", markdown);
+
+writeToFile();
 init();
