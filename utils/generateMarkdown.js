@@ -1,23 +1,28 @@
-function generateMarkdown(data, userData) {
+function generateMarkdown(data) {
+  console.log(data)
   return `
-# ${data.title}
+# ${data.Title}  
+
+![License type](https://img.shields.io/badge/License-${encodeURI(data.License)}-informational)
 
 ## Description
 ${data.Description}
 
 ## Table of Contents
 
-[Installation](#installation)
-[Usage](#usage)
-[License](#license)
-[Contributors](#contributors)
-[Tests](#tests)
-[Questions](#questions)
+* [Installation](#installation)  
+* [Usage](#usage)  
+* [License](#license)  
+* [Contributors](#contributors)  
+* [Tests](#tests)  
+* [Questions](#questions)  
 
 
 ## Installation
-${data.Install}
 
+\`\`\`
+${data.Install}
+\`\`\`
 ## Usage
 ${data.Usage}
 
@@ -28,9 +33,14 @@ ${data.License}
 ${data.Contributors}
 
 ## Tests
+\`\`\`
+${data.Test}
+\`\`\`
 ## Questions
+<img src="${data.avatar_url}" alt ="avatar" style="border-radius: 16px" width="30"/>
+${data.name} 
 
-${userData.name}
+Contact the creator of this project directly at ${data.Email}.
 `;
 }
-module.exports = { generateMarkdown: generateMarkdown };
+module.exports = generateMarkdown;

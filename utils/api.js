@@ -1,17 +1,14 @@
-const axios = require("axios")
+const {get} = require("axios")
 const api = {
-  getUser(username, callback) {
+  getUser: async function(username) {
     const URL = "https://api.github.com/users/" + username;
-    axios.get(URL).then(function (response) {
-      const userInfo = {
-        avatar: response.data.avatar_URL,
-        realName: response.data.name,
-        email: response.data.email
-      }
-      callback(userData);
-    })
+   return await get(URL)
+    // .then(function (response) {
+
+    //   callback(userData);
+    // })
   }
 };
 
-api.getUser("mhargett23")
+//api.getUser("mhargett23")
 module.exports = api;

@@ -17,7 +17,7 @@ const questions = [
     {
         type: "input",
         message: "How do you describe this project?",
-        name: "Desciption",
+        name: "Description",
     },
     {
         type: "input",
@@ -36,23 +36,39 @@ const questions = [
     },
     {
         type: "input",
+        message: "What is your email address?",
+        name: "Email",
+    },
+    {
+        type: "input",
+        message: "How to run tests?",
+        name: "Test",
+    },
+    {
+        type: "list",
+        choices: ["MIT", "apache 2.0"],
         message: "What license do you want to use?",
         name: "License",
     }
 ];
 
 function writeToFile(fileName, data) {
-}
-
-function init() {
-    inquire.prompt(questions).then(function (response) {
-        API.getUser(response.username, function (userData) {
-            const markdown = generate.generateMarkdown(response, userData);
-        })
+    fs.writeFile(fileName, generate(data), err => {
+        if (err) throw err
+        console.log('...saving')
     })
 }
 
-console.log("response", markdown);
+async function init() {
+    const response = await inquire.prompt(questions)
+    console.log(response)
+    const { data } = await API.getUser(response.Username)
+    console.log(data)
+    // const markdown = generate.generate
+    writeToFile("test.md", { ...response, ...data })
+    // console.log("response", markdown);
 
-writeToFile();
+
+}
+
 init();
